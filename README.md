@@ -77,6 +77,19 @@ After a full run you should have:
 - Images for every task/config/model in `images/`.
 - Experiment results in `data/`, including per-condition pickles and summary CSVs.
 
+## Dataset on Zenodo
+
+The pre-generated `images/` and `data/` folders are available on Zenodo:
+
+- DOI: `10.5281/zenodo.18022032`
+- Record: `https://doi.org/10.5281/zenodo.18022032`
+
+You can download and unpack the dataset with the script below.
+
+```bash
+bash scripts/download_zenodo.sh
+```
+
 ## Minimal Quick Start (Notebook Order)
 
 1) Run all notebooks in `create_images/` for the models you need.  
