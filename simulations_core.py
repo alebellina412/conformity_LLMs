@@ -248,26 +248,6 @@ def import_mistral_24B():
 
     return model, processor
 
-# def import_gemma_27B():
-
-#     login(token="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")
-
-#     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-#     model_id = "google/gemma-3-27b-it" # (1b, 4b, 12b, 27b)
-
-#     # Carica manualmente il processore con use_fast=True
-#     processor = AutoProcessor.from_pretrained(model_id, use_fast=True)
-
-#     pipe = pipeline(
-#         "image-text-to-text",
-#         model=model_id,
-#         processor=processor,
-#         device=device,
-#         torch_dtype=torch.bfloat16
-#     )
-#     return pipe, processor
-
 
 def create_chat_template(text, image):
     messages = [
