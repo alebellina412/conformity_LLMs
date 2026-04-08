@@ -1,0 +1,28 @@
+# Unified environment for running BOTH general and Ovis notebooks.
+# This uses the safe intersection implied by notebook constraints:
+# - general notebooks: transformers>=4.49
+# - Ovis notebooks:    transformers<4.54.0
+# so transformers is pinned to 4.53.3 here.
+torch==2.8.0
+torchvision==0.23.0
+transformers==4.53.3
+accelerate==1.10.1
+bitsandbytes==0.48.1
+qwen_vl_utils==0.0.14
+huggingface-hub==0.35.3
+
+# Data and plotting (used in notebooks/scripts)
+numpy==1.24.4
+pandas==2.2.3
+matplotlib==3.7.3
+Pillow==10.1.0
+tqdm==4.66.1
+
+# Notebook orchestration (run_all.ipynb)
+nbformat==5.9.2
+nbclient==0.9.0
+jupyter_client==8.3.1
+
+# If you want separate environments, use:
+# - requirements-general.txt
+# - requirements-ovis.txt

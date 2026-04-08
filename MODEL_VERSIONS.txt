@@ -1,0 +1,29 @@
+# Model IDs used in this repository
+# Source of truth: simulations_core.py and model labels in run_all.ipynb / general_notebook*.ipynb
+
+[QWEN family]
+qwen_3B    -> Qwen/Qwen2.5-VL-3B-Instruct
+qwen_7B    -> Qwen/Qwen2.5-VL-7B-Instruct
+qwen_32B   -> Qwen/Qwen2.5-VL-32B-Instruct
+qwen2_2B   -> Qwen/Qwen2-VL-2B-Instruct
+qwen2_7B   -> Qwen/Qwen2-VL-7B-Instruct
+qwen_72B_quantized (optional helper) -> Qwen/Qwen2.5-VL-72B-Instruct
+qwen_32B_quantized (optional helper) -> Qwen/Qwen2.5-VL-32B-Instruct
+
+[MISTRAL family]
+mistral_24B -> mistralai/Mistral-Small-3.1-24B-Instruct-2503
+
+[GEMMA family]
+gemma_1B  (optional helper) -> google/gemma-3-1b-it
+gemma_4B                    -> google/gemma-3-4b-it
+gemma_12B                   -> google/gemma-3-12b-it
+gemma_27B                   -> google/gemma-3-27b-it
+
+[OVIS family]
+ovis_1B   (helper in core)  -> AIDC-AI/Ovis2-1B
+ovis_2B   (helper in core)  -> AIDC-AI/Ovis2-2B
+ovis_4B                    -> AIDC-AI/Ovis2-4B
+ovis_8B                    -> AIDC-AI/Ovis2-8B
+ovis_16B                   -> AIDC-AI/Ovis2-16B
+ovis_34B                   -> AIDC-AI/Ovis2-34B
+ovis_gemma_9B (helper)     -> AIDC-AI/Ovis1.6-Gemma2-9B

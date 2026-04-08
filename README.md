@@ -2,6 +2,74 @@
 
 This repository generates synthetic images for three perceptual tasks and runs LLM-based experiments to evaluate performance and conformity patterns. The workflow is notebook-driven and split into two experiment paths (standard and Ovis) because they require different imports and dependencies.
 
+## System Requirements
+
+### Tested software environment
+
+- Operating system tested: `Ubuntu 22.04.5 LTS` (Jammy)
+- Python tested locally in this repository: `Python 3.10.12`
+- The notebook execution logs in this repository also show runs on Python `3.11` environments (e.g., `/opt/conda/lib/python3.11/...`)
+
+### Python dependencies
+
+This repository now provides three installable requirement files:
+
+- `requirements.txt`
+- `requirements-general.txt`
+- `requirements-ovis.txt`
+
+Recommended for full reproducibility (single environment that runs both paths):
+
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+This unified file is pinned to a compatibility intersection, because notebook constraints differ:
+
+- Standard/general notebooks use `transformers>=4.49`
+- Ovis notebooks use `transformers<4.54.0`
+
+So `requirements.txt` pins `transformers==4.53.3` (compatible with both).
+
+If you want separate environments:
+
+```bash
+# General (non-Ovis) path
+python3 -m pip install -r requirements-general.txt
+
+# Ovis path
+python3 -m pip install -r requirements-ovis.txt
+```
+
+Observed `transformers` versions in notebook outputs:
+
+- General/non-Ovis notebooks: `4.51.3`, `4.53.1`, `4.53.3`, `4.55.2`
+- Ovis notebooks: `4.53.3` (consistent with `<4.54.0`)
+
+### Model versions / model IDs
+
+All model IDs used by the notebooks and `simulations_core.py` are listed in:
+
+- `MODEL_VERSIONS.txt`
+
+This file maps each `model_label` (used in `run_all.ipynb` and general notebooks) to the exact Hugging Face model ID loaded in code.
+
+### Non-standard hardware requirements
+
+- A CUDA-capable GPU is required for practical execution.
+- `simulations_core.py` uses GPU-oriented settings (`device_map="auto"`, `.cuda()`, `torch_dtype=torch.bfloat16`, and optional bitsandbytes quantization).
+- Larger models (e.g., 16B/24B/27B/32B/34B/72B variants) may require high VRAM and/or multi-GPU setups.
+
+### Reproducibility note
+
+Exact reproducibility can vary with:
+
+- GPU architecture and CUDA stack
+- PyTorch / Transformers / bitsandbytes versions
+- Model-side updates on remote hubs
+
+For this reason, use the pinned `requirements.txt` and the exact model IDs in `MODEL_VERSIONS.txt`.
+
 ## Repository Structure
 
 - `create_images/`  
@@ -19,6 +87,8 @@ This repository generates synthetic images for three perceptual tasks and runs L
   Output directory for experiment results (pickles, csvs, etc.).
 - `simulations_core.py`  
   Shared core logic used by the general notebooks.
+- `LICENSE.txt`  
+  MIT license file for code and documentation reuse.
 
 ## Tasks, Configurations, and Models
 
@@ -92,6 +162,14 @@ bash scripts/download_zenodo.sh
 
 ## Minimal Quick Start (Notebook Order)
 
-1) Run all notebooks in `create_images/` for the models you need.  
-2) Run `run_all.ipynb` to generate standard + Ovis results.  
-3) Inspect results in `data/`.
+1) Install dependencies:
+
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+2) Run all notebooks in `create_images/` for the models you need.  
+3) Run `run_all.ipynb` to generate standard + Ovis results.  
+4) Inspect results in `data/`.
+
+For exact model identifiers, see `MODEL_VERSIONS.txt`.
